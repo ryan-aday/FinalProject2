@@ -8,4 +8,10 @@ class Person{
     angle = a;
   }
   
+  // default constructor
+  Person(){
+    Person(width/2, height/2, 10, 0);
+  }
+    
+  
 }
