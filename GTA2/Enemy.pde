@@ -42,5 +42,12 @@ class Enemy{
     return point;
   }
   
+  void display(){
+    ellipse(xcor, ycor, 10, 10);
+    fill(255, 255, 255);
+    ellipse(xcor + 5 * cos(angle), ycor + 5 * sin(angle), 3, 3);
+    fill(255, 0, 0);
+  }
+  
   
 }

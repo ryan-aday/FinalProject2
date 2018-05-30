@@ -7,7 +7,8 @@ void setup(){
   size(600, 400);
   background(0, 0, 0);
   person = new Person();
-  person.Display();
+  person.display();
+  enemies = new ArrayList<Enemy>();
 }
 
 /*
@@ -19,6 +20,11 @@ void setup(){
 */
 
 void draw(){
+  Enemy e = new Enemy(10, 0);
+  enemies.add(e);
+  for(Enemy i: enemies){
+    i.display();
+  }
 }
 
 
