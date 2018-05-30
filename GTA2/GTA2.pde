@@ -1,5 +1,6 @@
 Car car;
 Person person;
+ArrayList<Enemy> enemies;
 int a=1;
 
 void setup(){
