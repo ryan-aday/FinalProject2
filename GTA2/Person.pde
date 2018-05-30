@@ -1,61 +1,74 @@
+boolean[] keys= new boolean[128];
 class Person{
-  float x, y, speed, angle;
+  float x, y, r, speed, angle;
   
-  Person(float x, float y, float v, float a){
-    xcor = x;
-    ycor = y;
-    vel = v;
-    angle = a;xx
+  Person(float _x, float _y, float _r, float _speed, float _angle){
+    x = _x;
+    y = _y;
+    r = _r;
+    speed = _speed;
+    angle = _angle;
   }
   
   // default constructor
   Person(){
-    xcor = width/2.0;
-    ycor = height/2.0;
-    vel = 10.0;
+    x = width/2.0;
+    y = height/2.0;
+    speed = 10.0;
     angle = 0.0;
   }
   
  void move(){
     if (keyPressed){
-      if (key=='d'){
+      if (keys['d']){
         clear();
         translate(width/2, height/2);
         angle+=.06;
-        rotate(angle);
-        rect(x, y, L, W, 7);
+   //     rotate(angle);
+        x+=speed;
+        ellipse(x, y, r, r);
         fill(255, 255, 255);
-        //keyReleased();
+        //keyReleaswwwwed();
       }
-      if (key=='a'){
+      if (keys['a']){
         clear();
         translate(width/2, height/2);
         angle-=.06;
-        rotate(angle);
-        rect(x, y, L, W, 7);
+     //   rotate(angle);
+        x-=speed;
+        ellipse(x, y, r, r);
         fill(255, 255, 255);
         //keyReleased();
       }
-      if (key=='w'){
+      if (keys['w']){
+        if (key=='a'){
+          x-=speed;
+          y-=speed;
+        }
+        if (key=='d'){
+            x+=speed;
+            y-=speed;
+        }
         clear();
         translate(width/2, height/2);
-        rotate(angle);
+      //  rotate(angle);
         fill(255, 255, 255);
-        rect(x+speed, y+speed, L, W, 7);
-        x+=speed*cos(angle);
-        y+=speed*sin(angle);
-
-        
+        y-=speed;
+        ellipse(x, y, r, r);
       }
-      if (key=='s'){
+      while (key=='s'){
+        if (key=='a'){
+          x-=speed;
+        }
+        if (key=='d'){
+            x+=speed;
+        }
         clear();
         translate(width/2, height/2);
-        rotate(angle);
+     //   rotate(angle);
         fill(255, 255, 255);
-        rect(x-speed, y-speed, L, W, 7);
-        x-=speed*cos(angle);
-        y-=speed*sin(angle);
-       
+        y+=speed;
+        ellipse(x, y, r, r);
         }
       }
     
