@@ -4,8 +4,8 @@ class Car{
   float ogX, ogY;
   
   Car(float _x, float _y, float _L, float _W, float _speed){
-    x=_x-_L/2;
-    y=_y-_W/2;
+    x=_x;
+    y=_y;
     L=_L;
     W=_W;
     /*
@@ -21,32 +21,37 @@ class Car{
     ogX=x+L/2;
     ogY=y+W/2;
     speed=_speed;
-    angle=0.01;
+    angle=0.00;
+    rectMode(CENTER);
   }
   
   void move(){
     if (keyPressed){
       if (key=='d'){
         clear();
+        pushMatrix();
         translate(x, y);
         rotate(angle);
         angle+=.01;
-        //x=0;
-        //y=0;
-        rect(x, y, L, W, 7);
+
+        rect(0, 0, L, W, 7);
         fill(255, 255, 255);
+        popMatrix();
         //keyReleased();
       }
       if (key=='a'){
         clear();
+        pushMatrix();
         translate(x, y);
-        rotate(-angle);
 
-        angle+=.01;
+        rotate(angle);
+
+        angle-=.01;
         //x=0;
         //y=0;
-        rect(x, y, L, W, 7);
+        rect(0, 0, L, W, 7);
         fill(255, 255, 255);
+        popMatrix();
         //keyReleased();
       }
       if (key=='s'){
@@ -69,6 +74,10 @@ class Car{
         }
       }
     
+  }
+  
+  void display(){
+      rect(300, 200, 50, 70, 7);
   }
   
   void keyReleased(){
