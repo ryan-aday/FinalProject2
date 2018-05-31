@@ -22,5 +22,5 @@ void draw(){
 
 void keyPressed(){
   println(key);
-  car.move(); 
+  person.move(); 
 }

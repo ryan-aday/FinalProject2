@@ -15,8 +15,41 @@ class Person{
     x = width/2.0;
     y = height/2.0;
     speed = 10.0;
-    angle = 0.0;
+    angle = radians(2*PI);
   }
-  
-}
  
+  void move(){
+      if (keyPressed){
+        if (key=='w'){
+            clear();
+            translate(width/2, height/2);
+            y-=speed;
+            ellipse(x, y, r, r);
+            ellipse(x+r/2, y+r/2, 3, 3);
+        }
+        if (key=='s'){
+            clear();
+            translate(width/2, height/2);
+            y+=speed;
+            ellipse(x, y, r, r);
+            ellipse(x+r/2, y+r/2, 3, 3);
+
+        }
+        if (key=='a'){
+            clear();
+            translate(width/2, height/2);
+            x-=speed;
+            ellipse(x, y, r, r);
+            ellipse(x+r/2, y+r/2, 3, 3);
+      }
+        if (key=='d'){
+            clear();
+            translate(width/2, height/2);
+            x+=speed;
+            ellipse(x, y, r, r);
+            ellipse(x+r/2, y+r/2, 3, 3);
+      }
+   
+      }
+  }
+}
