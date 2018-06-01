@@ -52,14 +52,13 @@ class Person{
    
       }
   }
-}
-
-  /*
+  
   void display(){
-    ellipse(xcor, ycor, 10, 10);
+    ellipse(x, y, 10, 10);
     fill(255, 255, 255);
-    ellipse(xcor + 5 * cos(angle), ycor + 5 * sin(angle), 3, 3);
+    ellipse(x + 5 * cos(angle), y + 5 * sin(angle), 3, 3);
     fill(255, 0, 0);
   }
+}
     
-  */
+ 
