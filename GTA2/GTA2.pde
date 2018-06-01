@@ -25,7 +25,9 @@ void draw(){
   Enemy e = new Enemy(10, 0);
   enemies.add(e);
   for(Enemy i: enemies){
-    i.display();
+    if (enemies.size() < 20){
+      i.display();
+    }
   }
   person.display();
 }
@@ -33,4 +35,5 @@ void draw(){
 
 void keyPressed(){
   println(key);
+  person.move();
 }

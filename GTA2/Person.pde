@@ -18,7 +18,7 @@ class Person{
     angle = radians(2*PI);
   }
  
-  void move(){
+  void orthoMove(){
       if (keyPressed){
         if (key=='w'){
             clear();
@@ -58,6 +58,16 @@ class Person{
     fill(255, 255, 255);
     ellipse(x + 5 * cos(angle), y + 5 * sin(angle), 3, 3);
     fill(255, 0, 0);
+  }
+  
+  void move(){
+    if (keyPressed){
+      if(key == 'w'){
+        clear();
+        x = x + cos(a);
+        y = y + sin(a);
+      }
+    }
   }
 }
     
