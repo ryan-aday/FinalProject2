@@ -23,11 +23,11 @@ void setup(){
 
 void draw(){
   Enemy e = new Enemy(10, 0);
-  enemies.add(e);
+  if (enemies.size() < 20){
+    enemies.add(e);
+  }
   for(Enemy i: enemies){
-    if (enemies.size() < 20){
-      i.display();
-    }
+    i.display();
   }
   person.display();
 }

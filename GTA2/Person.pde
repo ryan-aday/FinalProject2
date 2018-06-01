@@ -54,18 +54,20 @@ class Person{
   }
   
   void display(){
-    ellipse(x, y, 10, 10);
     fill(255, 255, 255);
-    ellipse(x + 5 * cos(angle), y + 5 * sin(angle), 3, 3);
+    ellipse(x, y, 10, 10);
     fill(255, 0, 0);
+    ellipse(x + 5 * cos(angle), y + 5 * sin(angle), 3, 3);
+    
   }
   
   void move(){
     if (keyPressed){
       if(key == 'w'){
         clear();
-        x = x + cos(a);
-        y = y + sin(a);
+        translate(width/2, height/2);
+        x = x + speed * cos(a);
+        y = y + speed * sin(a);
       }
     }
   }
