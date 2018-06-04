@@ -51,5 +51,6 @@ void keyPressed(){
       translate(width/2, height/2);
       angle+=.01;
       rotate(angle);
-      
+      popMatrix();
+    }
 }
