@@ -1,4 +1,3 @@
-boolean[] keys= new boolean[128];
 class Person{
   float x, y, r, speed, angle;
   
@@ -41,7 +40,7 @@ class Person{
             x-=speed;
             ellipse(x, y, r, r);
             ellipse(x+r/2, y+r/2, 3, 3);
-      }
+        }
         if (key=='d'){
             clear();
             translate(width/2, height/2);
@@ -49,8 +48,7 @@ class Person{
             ellipse(x, y, r, r);
             ellipse(x+r/2, y+r/2, 3, 3);
       }
-   
-      }
+    }
   }
   
   void display(){
@@ -58,9 +56,10 @@ class Person{
     ellipse(x, y, 10, 10);
     fill(255, 0, 0);
     ellipse(x + 5 * cos(angle), y + 5 * sin(angle), 3, 3);
-    
   }
-  
+}
+
+ /* 
   void move(){
     if (keyPressed){
       if(key == 'w'){
@@ -71,6 +70,4 @@ class Person{
       }
     }
   }
-}
-    
- 
+*/

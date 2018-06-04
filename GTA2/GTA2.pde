@@ -2,6 +2,7 @@ Car car;
 Person person;
 ArrayList<Enemy> enemies;
 int a=1;
+float angle, speed;
 
 void setup(){
   size(600, 400);
@@ -30,10 +31,25 @@ void draw(){
     i.display();
   }
   person.display();
+  angle=0;
+  speed=10;
 }
 
-
 void keyPressed(){
-  println(key);
-  person.move();
+    if (key=='w'){
+        for (Enemy i: enemies){
+            i.setY(i.getY()+speed);
+        }
+    }
+    if (key=='s'){
+        for (Enemy i: enemies){
+            i.setY(i.getY()-speed);
+        }
+    }
+    if (key=='a'){
+      pushMatrix();
+      translate(width/2, height/2);
+      angle+=.01;
+      rotate(angle);
+      
 }
