@@ -28,13 +28,10 @@ class Car{
   void move(){
     if (keyPressed){
       if (key=='d'){
-        clear();
         pushMatrix();
-        translate(x, y);
-        rotate(angle);
-        angle+=.01;
-
-        rect(0, 0, L, W, 7);
+        translate(frameCount % width, frameCount % height);
+        rect(x, y, L, W, 7);
+        drawShapeAtAngle(x, y, angle+radians(frameCount));
         fill(255, 255, 255);
         popMatrix();
         //keyReleased();
@@ -74,6 +71,16 @@ class Car{
         }
       }
     
+  }
+
+  void drawShapeAtAngle(float x,float y,float angle){
+     pushMatrix();
+     clear();
+     //change the coordinates for JUST this one object
+     translate(x,y);
+     rotate(angle);
+     rect(0, 0, L, W, 7);
+     popMatrix();
   }
   
   void display(){
