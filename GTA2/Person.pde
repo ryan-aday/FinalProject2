@@ -24,14 +24,14 @@ class Person{
             translate(width/2, height/2);
             y-=speed;
             ellipse(x, y, r, r);
-            ellipse(x+r/2, y+r/2, 3, 3);
+            //ellipse(x+r/2, y+r/2, 3, 3);
         }
         if (key=='s'){
             clear();
             translate(width/2, height/2);
             y+=speed;
             ellipse(x, y, r, r);
-            ellipse(x+r/2, y+r/2, 3, 3);
+            //ellipse(x+r/2, y+r/2, 3, 3);
 
         }
         if (key=='a'){
@@ -39,14 +39,14 @@ class Person{
             translate(width/2, height/2);
             x-=speed;
             ellipse(x, y, r, r);
-            ellipse(x+r/2, y+r/2, 3, 3);
+            //ellipse(x+r/2, y+r/2, 3, 3);
         }
         if (key=='d'){
             clear();
             translate(width/2, height/2);
             x+=speed;
             ellipse(x, y, r, r);
-            ellipse(x+r/2, y+r/2, 3, 3);
+            //ellipse(x+r/2, y+r/2, 3, 3);
       }
     }
   }
@@ -54,8 +54,8 @@ class Person{
   void display(){
     fill(255, 255, 255);
     ellipse(x, y, 10, 10);
-    fill(255, 0, 0);
-    ellipse(x + 5 * cos(angle), y + 5 * sin(angle), 3, 3);
+    //fill(255, 0, 0);
+    //ellipse(x + 5 * cos(angle), y + 5 * sin(angle), 3, 3);
   }
 }
 

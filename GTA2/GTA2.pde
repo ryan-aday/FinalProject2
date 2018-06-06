@@ -6,7 +6,7 @@ PImage bg;
 ArrayList<Enemy> enemies;
 int a=1;
 float angle, speed;
-int time;
+int time, tTime;
 boolean tick;
 
 void setup(){
@@ -16,7 +16,9 @@ void setup(){
   enemies= new ArrayList<Enemy>();
   gun= new Gun(width/2.0, height/2.0);
   bg = loadImage("GTAback2.jpg");
-  time=100;
+  time=millis();
+  tTime=1000;
+
 }
 /*
 void setup(){
@@ -31,13 +33,11 @@ void setup(){
 */
 
 void draw(){
-  if(millis() - time < 0){
+  int passedTime = millis() - time;
+    if (passedTime < tTime) {
     background(bg);
   }
   else{
-    tick=!tick;
-  }
-  if (!tick){
     background(0, 0, 0);
     Enemy e = new Enemy(10, 0);
     if (enemies.size() < 20){
@@ -51,6 +51,7 @@ void draw(){
     speed=10;
   }
 }
+
 
 void keyPressed(){
     if (key=='w'){
@@ -73,8 +74,7 @@ void keyPressed(){
       */
       angle+=1;
       for (Enemy i: enemies){
-            i.setY(i.getY()+speed*sin(angle));
-            i.setX(i.getX()+speed*cos(angle));
+        i.setX(i.getX()+speed);
         }
     }
 
@@ -89,11 +89,10 @@ void keyPressed(){
       */
       angle+=1;
       for (Enemy i: enemies){
-            i.setY(i.getY()-speed*sin(angle));
-            i.setX(i.getX()-speed*cos(angle));
+        i.setX(i.getX()-speed);
         }
     } 
 }
 void mouseDragged(){
-     //gun.move();      
+     gun.move();      
 }
