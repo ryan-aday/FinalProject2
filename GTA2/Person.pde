@@ -17,10 +17,11 @@ class Person{
   }
   
   void Display(){
-    ellipse(xcor, ycor, 30, 30);
     fill(255, 255, 255);
-    ellipse(xcor + 15 * cos(angle), ycor + 15 * sin(angle), 10, 10);
+    ellipse(xcor, ycor, 40, 40);
     fill(255, 0, 0);
+    ellipse(xcor + 12 * cos(angle), ycor + 12 * sin(angle), 10, 10);
+    
   }
     
   
