@@ -1,4 +1,3 @@
-boolean[] keys= new boolean[128];
 class Person{
   float x, y, r, speed, angle;
   
@@ -18,7 +17,7 @@ class Person{
     angle = radians(2*PI);
   }
  
-  void move(){
+  void orthoMove(){
       if (keyPressed){
         if (key=='w'){
             clear();
@@ -41,7 +40,7 @@ class Person{
             x-=speed;
             ellipse(x, y, r, r);
             ellipse(x+r/2, y+r/2, 3, 3);
-      }
+        }
         if (key=='d'){
             clear();
             translate(width/2, height/2);
@@ -49,17 +48,31 @@ class Person{
             ellipse(x, y, r, r);
             ellipse(x+r/2, y+r/2, 3, 3);
       }
-   
-      }
+    }
+  }
+  
+  void display(){
+    fill(255, 255, 255);
+    ellipse(x, y, 10, 10);
+    fill(255, 0, 0);
+    ellipse(x + 5 * cos(angle), y + 5 * sin(angle), 3, 3);
   }
 }
 
-  /*
-  void display(){
-    ellipse(xcor, ycor, 10, 10);
-    fill(255, 255, 255);
-    ellipse(xcor + 5 * cos(angle), ycor + 5 * sin(angle), 3, 3);
-    fill(255, 0, 0);
+ /* 
+  void move(){
+    if (keyPressed){
+      if(key == 'w'){
+        clear();
+        translate(width/2, height/2);
+        x = x + speed * cos(a);
+        y = y + speed * sin(a);
+      }
+    }
   }
+<<<<<<< HEAD
     
   */
+=======
+*/
+>>>>>>> 3ef15936d47983f98f782cfe3213bd0f7c48a127

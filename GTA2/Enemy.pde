@@ -11,6 +11,26 @@ class Enemy{
     angle = a;
   }
   
+  float getX(){
+      return xcor;
+  }
+  
+  float getY(){
+      return ycor;
+  }
+  
+  void setX(float val){
+      clear();
+      xcor=val;
+      spawn();
+  }
+  
+  void setY(float val){
+      clear();
+      ycor=val;
+      spawn();
+  }
+  
   Enemy(float v, float a){
     float[] location;
     location = spawn();
@@ -48,6 +68,4 @@ class Enemy{
     ellipse(xcor + 5 * cos(angle), ycor + 5 * sin(angle), 3, 3);
     fill(255, 0, 0);
   }
-  
-  
 }

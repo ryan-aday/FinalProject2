@@ -91,6 +91,7 @@ class Car{
     speed=0.0;
   }
   //mouseCLicked for bullets
+<<<<<<< HEAD
   
   boolean bumps(){
       return (x<0 && y<0 ||
@@ -99,3 +100,6 @@ class Car{
               x>600 && y>400);
   }
 }
+=======
+}
+>>>>>>> 3ef15936d47983f98f782cfe3213bd0f7c48a127
