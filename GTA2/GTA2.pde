@@ -50,11 +50,19 @@ void draw(){
     person.display();
     for (Bullet b: bullets){
       b.display();
+        for(Enemy i: enemies){
+          if(i.getX() == b.getX() ||
+             i.getY() == b.getX()){
+               enemies.remove(i);
+             }
+        }
     }
+      
+  }
     angle=0;
     speed=10;
   }
-}
+
 
 
 void keyPressed(){
@@ -94,21 +102,23 @@ void mouseDragged(){
        println(bullets.size());
      }
      
-    for (Bullet i: bullets){
-      try{
-      if (i.getX()==0 ||
+     try{
+        for (Bullet i: bullets){
+        if (i.getX()==0 ||
           i.getX()==width||
           i.getY()==0||
           i.getY()==height){
             bullets.clear();
-          }else{
+         }
+         else{
          i.move();
-          }
-      }catch (Exception e){
+         }
+       }
+     }catch (Exception e){
           printStackTrace(e);
-      }
-      }
-    }
+     }
+}
+    
 
 void mouseReleased(){
     bullets.clear();
