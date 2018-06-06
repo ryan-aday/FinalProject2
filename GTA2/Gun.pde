@@ -1,13 +1,11 @@
-ArrayList<Bullet> bullets;
 class Gun{
   float angle = 0;
   float targetAngle = 0;
-  float easing = 0.1;
+  float easing = 1;
   float x,y;
   Gun(float _x, float _y){
         x=_x;
         y=_y;
-        bullets=new ArrayList<Bullet>();
     }
     
     void move(){
@@ -26,9 +24,5 @@ class Gun{
       ellipse(5, 5, 5, 5 );
       fill(255, 255, 255);
       popMatrix();
-      for (Bullet i: bullets){
-        i.spawn();
-        i.move();
-      }
     }
 }

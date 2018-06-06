@@ -4,6 +4,7 @@ Gun gun;
 color bColor=color(255, 255, 255);
 PImage bg;
 ArrayList<Enemy> enemies;
+ArrayList<Bullet> bullets;
 int a=1;
 float angle, speed;
 int time, tTime;
@@ -65,13 +66,6 @@ void keyPressed(){
         }
     }
     if (key=='a'){
-      /*
-      pushMatrix();
-      translate(width/2, height/2);
-      angle+=.01;
-      rotate(angle);
-      popMatrix();
-      */
       angle+=1;
       for (Enemy i: enemies){
         i.setX(i.getX()+speed);
@@ -80,13 +74,6 @@ void keyPressed(){
 
     
     if (key=='d'){
-      /*
-      pushMatrix();
-      translate(width/2, height/2);
-      angle+=.01;
-      rotate(angle);
-      popMatrix();
-      */
       angle+=1;
       for (Enemy i: enemies){
         i.setX(i.getX()-speed);
@@ -94,5 +81,13 @@ void keyPressed(){
     } 
 }
 void mouseDragged(){
-     gun.move();      
+     gun.move();
+     Bullet b = new Bullet();
+     bullets.add(b);
+}
+
+void mouseReleased(){
+    for (Bullet i: bullets){
+         i.move();
+     } 
 }

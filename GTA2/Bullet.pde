@@ -3,12 +3,17 @@ class Bullet{
     float targetAngle = 0;
     float easing = 0.1;
     float x, y, angle;
-    Bullet(float _x, float _y){
-      x=_x;
-      y=_y;
+    
+    Bullet(){
+      float[] location;
+      location=spawn();
+      x=300;
+      y=200;
     }
     
-    void spawn(){
+    
+    float[] spawn(){
+      float[] point = new float[2];
       angle = atan2( mouseY - height/2, mouseX - width/2 );
       // calculate the shortest rotation direction
       float dir = (angle - targetAngle) / TWO_PI;
@@ -20,14 +25,26 @@ class Bullet{
       pushMatrix();
       translate( width/2, height/2 );
       rotate( targetAngle );
-      ellipse(x, y, 5, 5 );
-      fill(255, 255, 255);
+      ellipse(5, 5, 5, 5 );
+      fill(255, 0, 0);
       popMatrix();
+      point[0]=getX();
+      point[1]=getY();
+
+      return point;
     }
     
     void move(){
         ellipse(x+1, y+1, 5, 5);
         x++;
         y++;
+    }
+    
+    float getX(){
+        return x;
+    }
+    
+    float getY(){
+        return y;
     }
 }
