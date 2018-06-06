@@ -47,10 +47,33 @@ void keyPressed(){
         }
     }
     if (key=='a'){
+      /*
       pushMatrix();
       translate(width/2, height/2);
       angle+=.01;
       rotate(angle);
       popMatrix();
+      */
+      angle+=1;
+      for (Enemy i: enemies){
+            i.setY(i.getY()+speed*sin(angle));
+            i.setX(i.getX()+speed*cos(angle));
+        }
     }
+    
+    if (key=='d'){
+      /*
+      pushMatrix();
+      translate(width/2, height/2);
+      angle+=.01;
+      rotate(angle);
+      popMatrix();
+      */
+      angle+=1;
+      for (Enemy i: enemies){
+            i.setY(i.getY()-speed*sin(angle));
+            i.setX(i.getX()-speed*cos(angle));
+        }
+    } 
+      
 }
