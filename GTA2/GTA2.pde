@@ -1,5 +1,6 @@
 Car car;
 Person person;
+Gun gun;
 ArrayList<Enemy> enemies;
 int a=1;
 float angle, speed;
@@ -9,6 +10,7 @@ void setup(){
   background(0, 0, 0);
   person = new Person();
   enemies= new ArrayList<Enemy>();
+  gun= new Gun(width/2.0, height/2.0);
 }
 /*
 void setup(){
@@ -60,6 +62,7 @@ void keyPressed(){
             i.setX(i.getX()+speed*cos(angle));
         }
     }
+
     
     if (key=='d'){
       /*
@@ -75,5 +78,7 @@ void keyPressed(){
             i.setX(i.getX()-speed*cos(angle));
         }
     } 
-      
+}
+void mouseDragged(){
+     gun.move();      
 }
