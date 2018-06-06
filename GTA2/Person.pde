@@ -1,28 +1,73 @@
 class Person{
-  float xcor, ycor, vel, angle;
+  float x, y, r, speed, angle;
   
-  Person(float x, float y, float v, float a){
-    xcor = x;
-    ycor = y;
-    vel = v;
-    angle = a;
+  Person(float _x, float _y, float _r, float _speed, float _angle){
+    x = _x;
+    y = _y;
+    r = _r;
+    speed = _speed;
+    angle = _angle;
   }
   
   // default constructor
   Person(){
-    xcor = width/2.0;
-    ycor = height/2.0;
-    vel = 10.0;
-    angle = 0.0;
+    x = width/2.0;
+    y = height/2.0;
+    speed = 10.0;
+    angle = radians(2*PI);
+  }
+ 
+  void orthoMove(){
+      if (keyPressed){
+        if (key=='w'){
+            clear();
+            translate(width/2, height/2);
+            y-=speed;
+            ellipse(x, y, r, r);
+            ellipse(x+r/2, y+r/2, 3, 3);
+        }
+        if (key=='s'){
+            clear();
+            translate(width/2, height/2);
+            y+=speed;
+            ellipse(x, y, r, r);
+            ellipse(x+r/2, y+r/2, 3, 3);
+
+        }
+        if (key=='a'){
+            clear();
+            translate(width/2, height/2);
+            x-=speed;
+            ellipse(x, y, r, r);
+            ellipse(x+r/2, y+r/2, 3, 3);
+        }
+        if (key=='d'){
+            clear();
+            translate(width/2, height/2);
+            x+=speed;
+            ellipse(x, y, r, r);
+            ellipse(x+r/2, y+r/2, 3, 3);
+      }
+    }
   }
   
-  void Display(){
+  void display(){
     fill(255, 255, 255);
-    ellipse(xcor, ycor, 40, 40);
+    ellipse(x, y, 10, 10);
     fill(255, 0, 0);
-    ellipse(xcor + 12 * cos(angle), ycor + 12 * sin(angle), 10, 10);
-    
+    ellipse(x + 5 * cos(angle), y + 5 * sin(angle), 3, 3);
   }
-    
-  
 }
+
+ /* 
+  void move(){
+    if (keyPressed){
+      if(key == 'w'){
+        clear();
+        translate(width/2, height/2);
+        x = x + speed * cos(a);
+        y = y + speed * sin(a);
+      }
+    }
+  }
+*/
