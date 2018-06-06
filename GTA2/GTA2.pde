@@ -1,9 +1,13 @@
 Car car;
 Person person;
 Gun gun;
+color bColor=color(255, 255, 255);
+PImage bg;
 ArrayList<Enemy> enemies;
 int a=1;
 float angle, speed;
+int time;
+boolean tick;
 
 void setup(){
   size(600, 400);
@@ -11,6 +15,8 @@ void setup(){
   person = new Person();
   enemies= new ArrayList<Enemy>();
   gun= new Gun(width/2.0, height/2.0);
+  bg = loadImage("GTAback2.jpg");
+  time=100;
 }
 /*
 void setup(){
@@ -25,16 +31,25 @@ void setup(){
 */
 
 void draw(){
-  Enemy e = new Enemy(10, 0);
-  if (enemies.size() < 20){
-    enemies.add(e);
+  if(millis() - time < 0){
+    background(bg);
   }
-  for(Enemy i: enemies){
-    i.display();
+  else{
+    tick=!tick;
   }
-  person.display();
-  angle=0;
-  speed=10;
+  if (!tick){
+    background(0, 0, 0);
+    Enemy e = new Enemy(10, 0);
+    if (enemies.size() < 20){
+      enemies.add(e);
+    }
+    for(Enemy i: enemies){
+      i.display();
+    }
+    person.display();
+    angle=0;
+    speed=10;
+  }
 }
 
 void keyPressed(){
@@ -80,5 +95,5 @@ void keyPressed(){
     } 
 }
 void mouseDragged(){
-     gun.move();      
+     //gun.move();      
 }
