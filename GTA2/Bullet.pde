@@ -1,14 +1,15 @@
 class Bullet{
     //float angle = 0;
     float targetAngle = 0;
-    float easing = 0.1;
-    float x, y, angle;
+    float easing = 1;
+    float x, y, angle, speed;
     
     Bullet(){
       float[] location;
       location=spawn();
       x=300;
       y=200;
+      speed=2;
     }
     
     
@@ -26,7 +27,7 @@ class Bullet{
       translate( width/2, height/2 );
       rotate( targetAngle );
       ellipse(5, 5, 5, 5 );
-      fill(255, 0, 0);
+      //fill(255, 0, 0);
       popMatrix();
       point[0]=getX();
       point[1]=getY();
@@ -35,9 +36,10 @@ class Bullet{
     }
     
     void move(){
-        ellipse(x+1, y+1, 5, 5);
-        x++;
-        y++;
+      translate(width/2, height/2);
+      x=x+cos(angle);
+      y=y+sin(angle);
+      ellipse(x, y, 10, 10);
     }
     
     float getX(){
@@ -46,5 +48,11 @@ class Bullet{
     
     float getY(){
         return y;
+    }
+    
+    void display(){
+        fill(0, 255, 0);
+        ellipse(x, y, 5, 5);
+
     }
 }

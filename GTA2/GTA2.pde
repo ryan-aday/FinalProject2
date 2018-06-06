@@ -5,7 +5,6 @@ color bColor=color(255, 255, 255);
 PImage bg;
 ArrayList<Enemy> enemies;
 ArrayList<Bullet> bullets;
-int a=1;
 float angle, speed;
 int time, tTime;
 boolean tick;
@@ -15,6 +14,7 @@ void setup(){
   background(0, 0, 0);
   person = new Person();
   enemies= new ArrayList<Enemy>();
+  bullets= new ArrayList<Bullet>();
   gun= new Gun(width/2.0, height/2.0);
   bg = loadImage("GTAback2.jpg");
   time=millis();
@@ -48,6 +48,9 @@ void draw(){
       i.display();
     }
     person.display();
+    for (Bullet b: bullets){
+      b.display();
+    }
     angle=0;
     speed=10;
   }
@@ -83,11 +86,30 @@ void keyPressed(){
 void mouseDragged(){
      gun.move();
      Bullet b = new Bullet();
-     bullets.add(b);
-}
+     if (bullets.size()>15){
+       bullets.remove(15);
+     }
+     else{
+       bullets.add(b);
+       println(bullets.size());
+     }
+     
+    for (Bullet i: bullets){
+      try{
+      if (i.getX()==0 ||
+          i.getX()==width||
+          i.getY()==0||
+          i.getY()==height){
+            bullets.clear();
+          }else{
+         i.move();
+          }
+      }catch (Exception e){
+          printStackTrace(e);
+      }
+      }
+    }
 
 void mouseReleased(){
-    for (Bullet i: bullets){
-         i.move();
-     } 
+    bullets.clear();
 }

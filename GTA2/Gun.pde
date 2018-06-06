@@ -21,8 +21,8 @@ class Gun{
       pushMatrix();
       translate( width/2, height/2 );
       rotate( targetAngle );
-      ellipse(5, 5, 5, 5 );
-      fill(255, 255, 255);
+      ellipse(10, 10, 5, 5 );
+      fill(255, 0, 0);
       popMatrix();
     }
 }
