@@ -36,7 +36,7 @@ void draw(){
 }
 
 void keyPressed(){
-    if (key=='w'){
+    if (key=='w'){      
         for (Enemy i: enemies){
             i.setY(i.getY()+speed);
         }
