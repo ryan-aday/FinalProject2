@@ -33,6 +33,17 @@ void setup(){
 }
 */
 
+boolean close(float x1, float y1, float x2, float y2){
+  if(((x1 - x2) * (x1 - x2)) < 100 && ((y1 - y2) * (y1 - y2)) < 100){
+    println("true");
+    return true;    
+  }
+  else{
+    println("false");
+    return false;
+  }
+}
+
 void draw(){
   int passedTime = millis() - time;
     if (passedTime < tTime) {
@@ -50,18 +61,36 @@ void draw(){
     person.display();
     for (Bullet b: bullets){
       b.display();
+      ArrayList<Integer> deads = new ArrayList();
         for(Enemy i: enemies){
-          if(i.getX() == b.getX() ||
-             i.getY() == b.getY()){
-               enemies.remove(i);
+          if(close(i.getX(), i.getY(), b.getX(), b.getY())){
+               deads.add(enemies.indexOf(i));
              }
         }
-    }
+      int shift = 0;
+      ArrayList<Integer> olds = new ArrayList();
+       for(int x = 0; x < deads.size(); x++){
+         olds.add(deads.get(x));
+         enemies.remove(x - shift);
+         try{
+           Integer next = deads.get(x + 1);
+           for(Integer n: olds){
+             if(n > deads.get(x)){
+               shift = shift + 1;
+             }
+           }
+         }
+         catch(IndexOutOfBoundsException f){
+         }
+           
+           
+      }
       
   }
     angle=0;
     speed=10;
   }
+}
 
 
 
