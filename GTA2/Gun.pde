@@ -25,4 +25,8 @@ class Gun{
       fill(255, 0, 0);
       popMatrix();
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master
