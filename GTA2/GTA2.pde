@@ -52,7 +52,7 @@ void draw(){
       b.display();
         for(Enemy i: enemies){
           if(i.getX() == b.getX() ||
-             i.getY() == b.getX()){
+             i.getY() == b.getY()){
                enemies.remove(i);
              }
         }
@@ -66,7 +66,7 @@ void draw(){
 
 
 void keyPressed(){
-    if (key=='w'){
+    if (key=='w'){      
         for (Enemy i: enemies){
             i.setY(i.getY()+speed);
         }
@@ -82,7 +82,6 @@ void keyPressed(){
         i.setX(i.getX()+speed);
         }
     }
-
     
     if (key=='d'){
       angle+=1;
