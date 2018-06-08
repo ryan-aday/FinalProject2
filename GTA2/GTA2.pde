@@ -1,13 +1,20 @@
+import processing.core.PApplet;
+import processing.sound.*;
+
+//Effects and Pics
+SoundFile file;
+SoundFile backS;
+PImage bg, inst;
+
 Car car;
 Person person;
 Gun gun;
 color bColor=color(255, 255, 255);
-PImage bg;
 ArrayList<Enemy> enemies;
 ArrayList<Bullet> bullets;
 float angle, speed;
 int time, tTime;
-boolean tick;
+boolean tick, fired;
 
 void setup(){
   size(600, 400);
@@ -16,28 +23,48 @@ void setup(){
   enemies= new ArrayList<Enemy>();
   bullets= new ArrayList<Bullet>();
   gun= new Gun(width/2.0, height/2.0);
+  
+  //For Start Image
   bg = loadImage("GTAback2.jpg");
+  inst= loadImage("Instructions.jpg");
   time=millis();
   tTime=1000;
+  
+  //Shotgun SF
+  file=new SoundFile(this, "shotgunS.wav");
+  fired=false;
+  
+  //Background Music
+  backS=new SoundFile(this, "background.mp3");
+  backS.play();
+  /*
+  //Test
+  file.play();
+  */
 }
 
 boolean close(float x1, float y1, float x2, float y2){
   if(((x1 - x2) * (x1 - x2)) < 100 && ((y1 - y2) * (y1 - y2)) < 100){
-    println("true");
+    //println("true");
     return true;    
   }
   else{
-    println("false");
+    //println("false");
     return false;
   }
 }
 
 void draw(){
-  int passedTime = millis() - time;
-    if (passedTime < tTime) {
-    background(bg);
+  for (Enemy i: enemies){
+
   }
-  else{
+  
+  int passedTime = millis() - time;
+  if (passedTime < tTime) {
+    background(bg);
+  }else if (passedTime< tTime+5000){
+    background(inst);
+  }else{
     background(0, 0, 0);
     Enemy e = new Enemy(10, 0);
     if (enemies.size() < 20){
@@ -45,6 +72,12 @@ void draw(){
     }
     for(Enemy i: enemies){
       i.display();
+       if (i.getX()==width/2 &&
+        i.getY()==height/2){
+          println("true");
+          enemies.clear();
+          person.clear();
+        } 
     }
     person.display();
     for (Bullet b: bullets){
@@ -107,28 +140,40 @@ void keyPressed(){
         }
     } 
 }
+void mousePressed(){
+     if (fired=true){
+       file.play();
+     }
+}
+
 void mouseDragged(){
      gun.move();
+     fired=true;
+     
+     
      Bullet b = new Bullet();
      if (bullets.size()>15){
        bullets.remove(15);
      }
      else{
        bullets.add(b);
-       println(bullets.size());
+       //println(bullets.size());
      }
      
      try{
         for (Bullet i: bullets){
-        if (i.getX()==0 ||
-          i.getX()==width||
-          i.getY()==0||
-          i.getY()==height){
+        if (i.getX()<0+200 ||
+          i.getX()>width-200||
+          i.getY()<0+100||
+          i.getY()>height-100){
+            file.play();
             bullets.clear();
+
          }
          else{
          i.move();
          }
+         
        }
      }catch (Exception e){
           printStackTrace(e);
@@ -138,4 +183,5 @@ void mouseDragged(){
 
 void mouseReleased(){
     bullets.clear();
+    fired=false;
 }

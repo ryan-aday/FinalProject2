@@ -39,7 +39,6 @@ class Bullet{
       translate(width/2, height/2);
       x=x+cos(angle);
       y=y+sin(angle);
-      ellipse(x, y, 10, 10);
     }
     
     float getX(){

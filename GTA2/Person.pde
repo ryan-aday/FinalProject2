@@ -56,4 +56,16 @@ class Person{
     ellipse(x, y, 10, 10);
 
   }
+  
+  void clear(){
+    this.clear();
+  }
+  
+  float getX(){
+      return x;
+  }
+  
+  float getY(){
+      return y;
+  }
 }

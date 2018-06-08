@@ -12,10 +12,12 @@ class Enemy{
   }
   
   float getX(){
+      //println(xcor);
       return xcor;
   }
   
   float getY(){
+      //println(ycor);
       return ycor;
   }
   
