@@ -16,6 +16,8 @@ float angle, speed;
 int time, tTime;
 boolean tick, fired;
 
+boolean gOver=false;
+
 void setup(){
   size(600, 400);
   background(0, 0, 0);
@@ -55,10 +57,6 @@ boolean close(float x1, float y1, float x2, float y2){
 }
 
 void draw(){
-  for (Enemy i: enemies){
-
-  }
-  
   int passedTime = millis() - time;
   if (passedTime < tTime) {
     background(bg);
@@ -67,18 +65,20 @@ void draw(){
   }else{
     background(0, 0, 0);
     Enemy e = new Enemy(10, 0);
-    if (enemies.size() < 20){
+    if (enemies.size() < 20 && gOver==false){
       enemies.add(e);
     }
     for(Enemy i: enemies){
       i.display();
-       if (i.getX()==width/2 &&
-        i.getY()==height/2){
-          println("true");
-          enemies.clear();
-          person.clear();
-        } 
+      if (close(person.getX(), person.getY(), i.getX(), i.getY())){
+        gOver=true;
+        //noLoop();
+      }
     }
+    if (gOver==true){
+        person.clear();
+        clear();
+     }
     person.display();
     for (Bullet b: bullets){
       b.display();
@@ -106,8 +106,8 @@ void draw(){
            
            
       }
-      
   }
+
     angle=0;
     speed=10;
   }
