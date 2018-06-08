@@ -16,7 +16,7 @@ void setup(){
   enemies= new ArrayList<Enemy>();
   gun= new Gun(width/2.0, height/2.0);
   bg = loadImage("GTAback2.jpg");
-  time=100;
+  time=1000;
 }
 /*
 void setup(){
