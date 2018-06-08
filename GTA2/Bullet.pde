@@ -54,5 +54,6 @@ class Bullet{
         ellipse(x, y, 5, 5);
 
     }
+    
 
 }

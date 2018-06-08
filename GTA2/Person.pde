@@ -16,40 +16,6 @@ class Person{
     speed = 10.0;
     angle = radians(2*PI);
   }
- 
-  void orthoMove(){
-      if (keyPressed){
-        if (key=='w'){
-            clear();
-            translate(width/2, height/2);
-            y-=speed;
-            ellipse(x, y, r, r);
-            //ellipse(x+r/2, y+r/2, 3, 3);
-        }
-        if (key=='s'){
-            clear();
-            translate(width/2, height/2);
-            y+=speed;
-            ellipse(x, y, r, r);
-            //ellipse(x+r/2, y+r/2, 3, 3);
-
-        }
-        if (key=='a'){
-            clear();
-            translate(width/2, height/2);
-            x-=speed;
-            ellipse(x, y, r, r);
-            //ellipse(x+r/2, y+r/2, 3, 3);
-        }
-        if (key=='d'){
-            clear();
-            translate(width/2, height/2);
-            x+=speed;
-            ellipse(x, y, r, r);
-            //ellipse(x+r/2, y+r/2, 3, 3);
-      }
-    }
-  }
   
   void display(){
     fill(255, 255, 255);

@@ -2,9 +2,8 @@ import processing.core.PApplet;
 import processing.sound.*;
 
 //Effects and Pics
-SoundFile file;
-SoundFile backS;
-PImage bg, inst;
+SoundFile file, backS, deathScream;
+PImage bg, inst, gameOver;
 
 Car car;
 Person person;
@@ -26,9 +25,10 @@ void setup(){
   bullets= new ArrayList<Bullet>();
   gun= new Gun(width/2.0, height/2.0);
   
-  //For Start Image
+  //For Start And Game Over Image
   bg = loadImage("GTAback2.jpg");
   inst= loadImage("Instructions.jpg");
+  gameOver=loadImage("gameOver.png");
   time=millis();
   tTime=1000;
   
@@ -39,6 +39,9 @@ void setup(){
   //Background Music
   backS=new SoundFile(this, "background.mp3");
   backS.play();
+  
+  //Death Sounds
+  deathScream= new SoundFile(this, "death.wav");
   /*
   //Test
   file.play();
@@ -57,6 +60,8 @@ boolean close(float x1, float y1, float x2, float y2){
 }
 
 void draw(){
+  long a=System.nanoTime();
+  
   int passedTime = millis() - time;
   if (passedTime < tTime) {
     background(bg);
@@ -65,21 +70,29 @@ void draw(){
   }else{
     background(0, 0, 0);
     Enemy e = new Enemy(10, 0);
-    if (enemies.size() < 20 && gOver==false){
+    if (enemies.size() < 50 && gOver==false){
       enemies.add(e);
     }
     for(Enemy i: enemies){
       i.display();
+      i.chase(person);
       if (close(person.getX(), person.getY(), i.getX(), i.getY())){
         gOver=true;
+        deathScream.play();
+
+        //person.clear();
         //noLoop();
       }
     }
     if (gOver==true){
-        person.clear();
-        clear();
+        enemies.clear();
+        background(gameOver);
+        //clear();
+        //gOver=false;
      }
+     if (gOver==false){
     person.display();
+     }
     for (Bullet b: bullets){
       b.display();
       ArrayList<Integer> deads = new ArrayList();
@@ -109,8 +122,10 @@ void draw(){
   }
 
     angle=0;
-    speed=10;
+    speed=1;
   }
+  float p= (1/((System.nanoTime() -a)/1000000000.0));
+  println(p);
 }
 
 

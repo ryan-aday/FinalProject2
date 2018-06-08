@@ -70,4 +70,19 @@ class Enemy{
     ellipse(xcor + 5 * cos(angle), ycor + 5 * sin(angle), 3, 3);
     fill(255, 0, 0);
   }
+  
+  void chase(Person person){
+    float speedv=.9980;
+    if (person.getX() != getX() || person.getY() != getY()){
+      if((getX()-person.getX()>100) && (getY()-person.getY()>100)){
+        speedv=2.300;
+      }else{
+          speedv=.9980;
+      } xcor=person.getX()+((getX()-person.getX())*speedv);
+        ycor=person.getY()+((getY()-person.getY())*speedv);
+      //}xcor=getX()-(20+random(40))*.9975;
+      //ycor=getY()-(20+random(40))*.9975;
+    }    
+  }
+    
 }
