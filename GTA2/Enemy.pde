@@ -21,6 +21,8 @@ class Enemy{
       return ycor;
   }
   
+
+  
   void setX(float val){
       clear();
       xcor=val;

@@ -14,6 +14,7 @@ ArrayList<Bullet> bullets;
 float angle, speed;
 int time, tTime;
 boolean tick, fired;
+boolean isCar=true;
 
 boolean gOver=false;
 
@@ -21,6 +22,7 @@ void setup(){
   size(600, 400);
   background(0, 0, 0);
   person = new Person();
+  car= new Car();
   enemies= new ArrayList<Enemy>();
   bullets= new ArrayList<Bullet>();
   gun= new Gun(width/2.0, height/2.0);
@@ -59,6 +61,8 @@ boolean close(float x1, float y1, float x2, float y2){
   }
 }
 
+
+
 void draw(){
   long a=System.nanoTime();
   
@@ -76,14 +80,18 @@ void draw(){
     for(Enemy i: enemies){
       i.display();
       i.chase(person);
+      if (isCar==true && close(car.getX()+15, car.getY()+25, i.getX(), i.getY())){
+        isCar=false;
+        }
+      
       if (close(person.getX(), person.getY(), i.getX(), i.getY())){
         gOver=true;
         deathScream.play();
-
+        }
+       
         //person.clear();
         //noLoop();
       }
-    }
     if (gOver==true){
         enemies.clear();
         background(gameOver);
@@ -91,14 +99,22 @@ void draw(){
         //gOver=false;
      }
      if (gOver==false){
-    person.display();
+       if (isCar==true){
+           car.display();
+       }else{
+        person.display();
+       }
      }
+  }
     for (Bullet b: bullets){
       b.display();
       ArrayList<Integer> deads = new ArrayList();
         for(Enemy i: enemies){
           if(close(i.getX(), i.getY(), b.getX(), b.getY())){
                deads.add(enemies.indexOf(i));
+               //if (random(100)>90){
+                 //isCar=false;
+               //}
              }
         }
       int shift = 0;
@@ -119,13 +135,18 @@ void draw(){
            
            
       }
+    
   }
 
     angle=0;
-    speed=1;
-  }
-  float p= (1/((System.nanoTime() -a)/1000000000.0));
-  println(p);
+    if (isCar){
+      speed=4;
+    }else{
+      speed=3;
+    }
+  
+  //float p= (1/((System.nanoTime() -a)/1000000000.0));
+  //println(p);
 }
 
 
@@ -142,7 +163,7 @@ void keyPressed(){
         }
     }
     if (key=='a'){
-      angle+=1;
+      angle+=.1;
       for (Enemy i: enemies){
         i.setX(i.getX()+speed);
         }
