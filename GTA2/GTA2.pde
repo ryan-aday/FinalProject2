@@ -3,7 +3,7 @@ import processing.sound.*;
 
 //Effects and Pics
 SoundFile file, backS, deathScream;
-PImage bg, inst, gameOver;
+PImage bg, inst, gameOver, back;
 
 Car car;
 Person person;
@@ -31,6 +31,7 @@ void setup(){
   bg = loadImage("GTAback2.jpg");
   inst= loadImage("Instructions.jpg");
   gameOver=loadImage("gameOver.png");
+  back= loadImage("back.png");
   time=millis();
   tTime=1000;
   
@@ -72,7 +73,7 @@ void draw(){
   }else if (passedTime< tTime+5000){
     background(inst);
   }else{
-    background(0, 0, 0);
+    background(back);
     Enemy e = new Enemy(10, 0);
     if (enemies.size() < 50 && gOver==false){
       enemies.add(e);
